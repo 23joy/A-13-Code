@@ -8,9 +8,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> 
 
     <!-- google font -->
-     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Manrope:wght@200..800&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 
     <!-- font awsome -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,7 +18,7 @@
 
     <title>Document</title>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 geistfont">
     <header class="w-[80%] mx-auto space-y-5">
         <h1 class="font-bold text-[32px] text-[#002C5C]">Job Application Tracker</h1>
         <div class="grid grid-cols-3  gap-4">
@@ -45,182 +45,189 @@
                 <p>8 jobs</p>
             </div>
             <div class="gap-2">
-                <button id="All-btn" class=" btn btn-primary px-8 py-2.5 rounded-xs">All</button>
-                <button id="Interview-btn" class="bg-white px-8 py-2.5 rounded-xs text-[#64748B]">Interview</button>
-                <button id="Rejected-btn" class="bg-white px-8 py-2.5 rounded-xs text-[#64748B]">Rejected</button>
+                <button onclick="toggolStyle('All-btn')" id="All-btn" class=" bg-[#3B82F6] px-8 py-2.5 rounded-xs">All</button>
+                <button onclick="toggolStyle('Interview-btn')" id="Interview-btn" class="bg-white px-8 py-2.5 rounded-xs text-[#64748B]">Interview</button>
+                <button onclick="toggolStyle('Rejected-btn')" id="Rejected-btn" class="bg-white px-8 py-2.5 rounded-xs text-[#64748B]">Rejected</button>
             </div>
         </div>
+
+        <!-- empty section -->
+         <section id="empty-section"class="space-y-4 bg-white hidden" >
+            <div class="flex justify-center items-center ">
+                <img src="./jobs.png" alt="">
+                <div class="">
+                    <h2>No jobs available</h2>
+                    <p>Check back soon for new job opportunites</p>
+                </div>
+            </div>
+         </section>
+
+
+        <!-- cards section -->
         <section id="buttons" class="space-y-4" >
             <!-- card-1 -->
-            <div class="bg-white flex justify-between p-5 rounded-2xl">
+            <div class="bg-white lg:flex justify-between p-5 rounded">
+                <!-- card left -->
                  <div class="space-y-4">
                     <div>
-                        <h1 class="text-[#002C5C] font-semibold text-[18px]">Mobile First Crop</h1>
-                        <p class="text-[#64748B] font-[16px] ">React Native Developer</p>
+                        <h1 class="Mobile-name text-[#002C5C] font-semibold text-[18px]">Mobile First Crop</h1>
+                        <p class="Developer  text-[#64748B] font-[16px] ">React Native Developer</p>
                     </div>
+                    <p class="Remote text-[#64748B] font-[14px]">Remote • Full-time • $130,000 - $175,000</p>
                     <div>
-                        <button class="bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded-xl">NOT APPLIED</button>
-                        <h2 class="text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</h2>
+                        <button class=" select-btn bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded">NOT APPLIED</button>
+                        <h2 class="Notes text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</h2>
                     </div>
-                    <button class=" border border-green-600 px-3 py-2 rounded-xl text-green-700">INTERVIEW</button>
-                    <button class=" border border-red-600 px-3 py-2 rounded-xl text-red-700">REJECTED</button>
+                    <button class="interview-btn border border-green-600 px-3 py-2 rounded text-green-700">INTERVIEW</button>
+                    <button class="rejected-btn border border-red-600 px-3 py-2 rounded text-red-700">REJECTED</button>
                 </div>
-                <div><i class="fa-solid fa-trash-can"></i></div>
-            </div>
-            <!-- card-2 -->
-            <div class="bg-white flex justify-between p-5 rounded-2xl">
-                 <div class="bg-white">
-                    <div>
-                        <h1 class="text-[#002C5C] font-semibold text-[18px]">Mobile First Crop</h1>
-                        <p class="text-[#64748B] font-[16px] ">React Native Developer</p>
-                    </div>
-                    <div>
-                        <button class="bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded-xl">NOT APPLIED</button>
-                        <h2 class="text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</h2>
-                    </div>
-                    <button class=" border border-green-600 px-3 py-2 rounded-xl text-green-700">INTERVIEW</button>
-                    <button class=" border border-red-600 px-3 py-2 rounded-xl text-red-700">REJECTED</button>
+                <!-- card right -->
+                <div>
+                    <button class=" delete-btn border rounded-full p-1.5"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
-                <div><i class="fa-solid fa-trash-can"></i></div>
-            </div>
-            <!-- card-3 -->
-            <div class="bg-white flex justify-between p-5 rounded-2xl">
-                 <div class="bg-white">
-                    <div>
-                        <h1 class="text-[#002C5C] font-semibold text-[18px]">Mobile First Crop</h1>
-                        <p class="text-[#64748B] font-[16px] ">React Native Developer</p>
-                    </div>
-                    <div>
-                        <button class="bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded-xl">NOT APPLIED</button>
-                        <h2 class="text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</h2>
-                    </div>
-                    <button class=" border border-green-600 px-3 py-2 rounded-xl text-green-700">INTERVIEW</button>
-                    <button class=" border border-red-600 px-3 py-2 rounded-xl text-red-700">REJECTED</button>
-                </div>
-                <div><i class="fa-solid fa-trash-can"></i></div>
-            </div>
-            <!-- card-3 -->
-            <div class="bg-white flex justify-between p-5 rounded-2xl">
-                 <div class="bg-white">
-                    <div>
-                        <h1 class="text-[#002C5C] font-semibold text-[18px]">Mobile First Crop</h1>
-                        <p class="text-[#64748B] font-[16px] ">React Native Developer</p>
-                    </div>
-                    <div>
-                        <button class="bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded-xl">NOT APPLIED</button>
-                        <h2 class="text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</h2>
-                    </div>
-                    <button class=" border border-green-600 px-3 py-2 rounded-xl text-green-700">INTERVIEW</button>
-                    <button class=" border border-red-600 px-3 py-2 rounded-xl text-red-700">REJECTED</button>
-                </div>
-                <div><i class="fa-solid fa-trash-can"></i></div>
-            </div>
-            <!-- card-4 -->
-            <div class="bg-white flex justify-between p-5 rounded-2xl">
-                 <div class="bg-white">
-                    <div>
-                        <h1 class="text-[#002C5C] font-semibold text-[18px]">Mobile First Crop</h1>
-                        <p class="text-[#64748B] font-[16px] ">React Native Developer</p>
-                    </div>
-                    <div>
-                        <button class="bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded-xl">NOT APPLIED</button>
-                        <h2 class="text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</h2>
-                    </div>
-                    <button class=" border border-green-600 px-3 py-2 rounded-xl text-green-700">INTERVIEW</button>
-                    <button class=" border border-red-600 px-3 py-2 rounded-xl text-red-700">REJECTED</button>
-                </div>
-                <div><i class="fa-solid fa-trash-can"></i></div>
-            </div>
-            <!-- card-5 -->
-            <div class="bg-white flex justify-between p-5 rounded-2xl">
-                 <div class="bg-white">
-                    <div>
-                        <h1 class="text-[#002C5C] font-semibold text-[18px]">Mobile First Crop</h1>
-                        <p class="text-[#64748B] font-[16px] ">React Native Developer</p>
-                    </div>
-                    <div>
-                        <button class="bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded-xl">NOT APPLIED</button>
-                        <h2 class="text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</h2>
-                    </div>
-                    <button class=" border border-green-600 px-3 py-2 rounded-xl text-green-700">INTERVIEW</button>
-                    <button class=" border border-red-600 px-3 py-2 rounded-xl text-red-700">REJECTED</button>
-                </div>
-                <div><i class="fa-solid fa-trash-can"></i></div>
-            </div>
-            <!-- card-6 -->
-            <div class="bg-white flex justify-between p-5 rounded-2xl">
-                 <div class="bg-white">
-                    <div>
-                        <h1 class="text-[#002C5C] font-semibold text-[18px]">Mobile First Crop</h1>
-                        <p class="text-[#64748B] font-[16px] ">React Native Developer</p>
-                    </div>
-                    <div>
-                        <button class="bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded-xl">NOT APPLIED</button>
-                        <h2 class="text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</h2>
-                    </div>
-                    <button class=" border border-green-600 px-3 py-2 rounded-xl text-green-700">INTERVIEW</button>
-                    <button class=" border border-red-600 px-3 py-2 rounded-xl text-red-700">REJECTED</button>
-                </div>
-                <div><i class="fa-solid fa-trash-can"></i></div>
-            </div>
-            <!-- card-7 -->
-            <div class="bg-white flex justify-between p-5 rounded-2xl">
-                 <div class="bg-white">
-                    <div>
-                        <h1 class="text-[#002C5C] font-semibold text-[18px]">Mobile First Crop</h1>
-                        <p class="text-[#64748B] font-[16px] ">React Native Developer</p>
-                    </div>
-                    <div>
-                        <button class="bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded-xl">NOT APPLIED</button>
-                        <h2 class="text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</h2>
-                    </div>
-                    <button class=" border border-green-600 px-3 py-2 rounded-xl text-green-700">INTERVIEW</button>
-                    <button class=" border border-red-600 px-3 py-2 rounded-xl text-red-700">REJECTED</button>
-                </div>
-                <div><i class="fa-solid fa-trash-can"></i></div>
-            </div>
-            <!-- card-8 -->
-            <div class="bg-white flex justify-between p-5 rounded-2xl">
-                 <div class="bg-white">
-                    <div>
-                        <h1 class="text-[#002C5C] font-semibold text-[18px]">Mobile First Crop</h1>
-                        <p class="text-[#64748B] font-[16px] ">React Native Developer</p>
-                    </div>
-                    <div>
-                        <button class="bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded-xl">NOT APPLIED</button>
-                        <h2 class="text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</h2>
-                    </div>
-                    <button class=" border border-green-600 px-3 py-2 rounded-xl text-green-700">INTERVIEW</button>
-                    <button class=" border border-red-600 px-3 py-2 rounded-xl text-red-700">REJECTED</button>
-                </div>
-                <div><i class="fa-solid fa-trash-can"></i></div>
             </div>
 
+             <!-- card-2 -->
+            <div class="bg-white lg:flex justify-between p-5 rounded">
+                <!-- card left -->
+                 <div class="space-y-4">
+                    <div>
+                        <h1 class="Mobile-name text-[#002C5C] font-semibold text-[18px]">WebFlow Agency</h1>
+                        <p class="Developer  text-[#64748B] font-[16px] ">Web Designer & Developer</p>
+                    </div>
+                    <p class="Remote text-[#64748B] font-[14px]">Los Angeles, CA • Part-time • $80,000 - $120,000</p>
+                    <div>
+                        <button class=" select-btn bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded">NOT APPLIED</button>
+                        <h2 class="Notes text-[#323B49]">Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.</h2>
+                    </div>
+                    <button class="interview-btn border border-green-600 px-3 py-2 rounded text-green-700">INTERVIEW</button>
+                    <button class="rejected-btn border border-red-600 px-3 py-2 rounded text-red-700">REJECTED</button>
+                </div>
+                <!-- card right -->
+                <div><button class=" delete-btn border rounded-full p-1.5"><i class="fa-solid fa-trash-can"></i></button></div>
+            </div>
+            
+             <!-- card-3 -->
+            <div class="bg-white lg:flex justify-between p-5 rounded">
+                <!-- card left -->
+                 <div class="space-y-4">
+                    <div>
+                        <h1 class="Mobile-name text-[#002C5C] font-semibold text-[18px]">DataViz Solutions</h1>
+                        <p class="Developer  text-[#64748B] font-[16px] ">Data Visualization Specialist</p>
+                    </div>
+                    <p class="Remote text-[#64748B] font-[14px]">Boston, MA • Full-time • $125,000 - $165,000</p>
+                    <div>
+                        <button class=" select-btn bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded">NOT APPLIED</button>
+                        <h2 class="Notes text-[#323B49]">Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking.</h2>
+                    </div>
+                    <button class="interview-btn border border-green-600 px-3 py-2 rounded text-green-700">INTERVIEW</button>
+                    <button class="rejected-btn border border-red-600 px-3 py-2 rounded text-red-700">REJECTED</button>
+                </div>
+                <!-- card right -->
+                <div><button class=" delete-btn border rounded-full p-1.5"><i class="fa-solid fa-trash-can"></i></button></div>
+            </div>
+            
+            <!-- card-4 -->
+            <div class="bg-white lg:flex justify-between p-5 rounded">
+                <!-- card left -->
+                 <div class="space-y-4">
+                    <div>
+                        <h1 class="Mobile-name text-[#002C5C] font-semibold text-[18px]">CloudFirst Inc</h1>
+                        <p class="Developer  text-[#64748B] font-[16px] ">Backend Developer</p>
+                    </div>
+                    <p class="Remote text-[#64748B] font-[14px]">Seattle, WA • Full-time • $140,000 - $190,000</p>
+                    <div>
+                        <button class=" select-btn bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded">NOT APPLIED</button>
+                        <h2 class="Notes text-[#323B49]">Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps practices and cloud infrastructure.</h2>
+                    </div>
+                    <button class="interview-btn border border-green-600 px-3 py-2 rounded text-green-700">INTERVIEW</button>
+                    <button class="rejected-btn border border-red-600 px-3 py-2 rounded text-red-700">REJECTED</button>
+                </div>
+                <!-- card right -->
+                <div><button class=" delete-btn border rounded-full p-1.5"><i class="fa-solid fa-trash-can"></i></button></div>
+            </div>
+            
+            <!-- card-5 -->
+            <div class="bg-white lg:flex justify-between p-5 rounded">
+                <!-- card left -->
+                 <div class="space-y-4">
+                    <div>
+                        <h1 class="Mobile-name text-[#002C5C] font-semibold text-[18px]">Innovation Labs</h1>
+                        <p class="Developer  text-[#64748B] font-[16px] ">UI/UX Engineer</p>
+                    </div>
+                    <p class="Remote text-[#64748B] font-[14px]">Austin, TX • Full-time • $110,000 - $150,000</p>
+                    <div>
+                        <button class=" select-btn bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded">NOT APPLIED</button>
+                        <h2 class="Notes text-[#323B49]">Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required.</h2>
+                    </div>
+                    <button class="interview-btn border border-green-600 px-3 py-2 rounded text-green-700">INTERVIEW</button>
+                    <button class="rejected-btn border border-red-600 px-3 py-2 rounded text-red-700">REJECTED</button>
+                </div>
+                <!-- card right -->
+                <div><button class=" delete-btn border rounded-full p-1.5"><i class="fa-solid fa-trash-can"></i></button></div>
+            </div>
+            
+             <!-- card-6 -->
+            <div class="bg-white lg:flex justify-between p-5 rounded">
+                <!-- card left -->
+                 <div class="space-y-4">
+                    <div>
+                        <h1 class="Mobile-name text-[#002C5C] font-semibold text-[18px]">MegaCorp Solutions</h1>
+                        <p class="Developer  text-[#64748B] font-[16px] ">JavaScript Developer</p>
+                    </div>
+                    <p class="Remote text-[#64748B] font-[14px]">New York, NY • Full-time • $130,000 - $170,00</p>
+                    <div>
+                        <button class=" select-btn bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded">NOT APPLIED</button>
+                        <h2 class="Notes text-[#323B49]">Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development opportunities.</h2>
+                    </div>
+                    <button class="interview-btn border border-green-600 px-3 py-2 rounded text-green-700">INTERVIEW</button>
+                    <button class="rejected-btn border border-red-600 px-3 py-2 rounded text-red-700">REJECTED</button>
+                </div>
+                <!-- card right -->
+                <div><button class=" delete-btn border rounded-full p-1.5"><i class="fa-solid fa-trash-can"></i></button></div>
+            </div>
+            
+            <!-- card-7 -->
+            <div class="bg-white lg:flex justify-between p-5 rounded">
+                <!-- card left -->
+                 <div class="space-y-4">
+                    <div>
+                        <h1 class="Mobile-name text-[#002C5C] font-semibold text-[18px]">StartupXYZ</h1>
+                        <p class="Developer  text-[#64748B] font-[16px] ">Full Stack Engineer</p>
+                    </div>
+                    <p class="Remote text-[#64748B] font-[14px]">Remote • Full-time • $120,000 - $160,000</p>
+                    <div>
+                        <button class=" select-btn bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded">NOT APPLIED</button>
+                        <h2 class="Notes text-[#323B49]">Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included.</h2>
+                    </div>
+                    <button class="interview-btn border border-green-600 px-3 py-2 rounded text-green-700">INTERVIEW</button>
+                    <button class="rejected-btn border border-red-600 px-3 py-2 rounded text-red-700">REJECTED</button>
+                </div>
+                <!-- card right -->
+                <div><button class=" delete-btn border rounded-full p-1.5"><i class="fa-solid fa-trash-can"></i></button></div>
+            </div>
+            
+            <!-- card-8 -->
+            <div class="bg-white lg:flex justify-between p-5 rounded">
+                <!-- card left -->
+                 <div class="space-y-4">
+                    <div>
+                        <h1 class="Mobile-name text-[#002C5C] font-semibold text-[18px]">TechCorp Industries</h1>
+                        <p class="Developer  text-[#64748B] font-[16px] ">Senior Frontend Developer</p>
+                    </div>
+                    <p class="Remote text-[#64748B] font-[14px]">San Francisco, CA • Full-time • $130,000 - $175,000</p>
+                    <div>
+                        <button class=" select-btn bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded">NOT APPLIED</button>
+                        <h2 class="Notes text-[#323B49]">We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.</h2>
+                    </div>
+                    <button class="interview-btn border border-green-600 px-3 py-2 rounded text-green-700">INTERVIEW</button>
+                    <button class="rejected-btn border border-red-600 px-3 py-2 rounded text-red-700">REJECTED</button>
+                </div>
+                <!-- card right -->
+                <div><button class=" delete-btn border rounded-full p-1.5"><i class="fa-solid fa-trash-can"></i></button></div>
+            </div>
         </section>
      </main>
-     <!-- <section class="w-[80%] mx-auto space-y-5 bg-white p-5">
-        <h1 class="text-[#002C5C] font-semibold text-[20px]">Available Jobs</h1>
-        <div class="gap-2">
-            <button id="All-btn" class=" btn btn-primary px-8 py-2.5 rounded-xs">All</button>
-            <button id="Interview-btn" class="bg-white px-8 py-2.5 rounded-xs text-[#64748B]">Interview</button>
-            <button id="Rejected-btn" class="bg-white px-8 py-2.5 rounded-xs text-[#64748B]">Rejected</button>
-        </div>
-        <div id="buttons">
-             <div class="bg-white">
-                <div>
-                    <h1 class="text-[#002C5C] font-semibold text-[18px]">Mobile First Crop</h1>
-                    <p class="text-[#64748B] font-[16px] ">React Native Developer</p>
-                </div>
-                <div>
-                    <button class="bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded-xl">NOT APPLIED</button>
-                    <h2 class="text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</h2>
-                </div>
-                <button class=" border border-green-600 px-3 py-2 rounded-xl text-green-700">INTERVIEW</button>
-                <button class=" border border-red-600 px-3 py-2 rounded-xl text-red-700">REJECTED</button>
-            </div>
-        </div>
-
-    </section> -->
     <script src="./script.js"></script>
 </body>
 </html>
