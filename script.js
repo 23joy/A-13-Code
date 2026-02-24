@@ -75,7 +75,29 @@ mainContainer.addEventListener('click',function(event){
         renderInterviewList()
         allCardCount()
     }
-    
+    else if(event.target.classList.contains('rejected-btn')){
+        const parentNode=event.target.parentNode.parentNode;
+        const Mobilename=parentNode.querySelector('.Mobile-name').innerText
+        const Developer=parentNode.querySelector('.Developer').innerText
+        const Remote=parentNode.querySelector('.Remote').innerText
+        const selectbtn=parentNode.querySelector('.select-btn').innerText
+        const Notes=parentNode.querySelector('.Notes').innerText
+        parentNode.querySelector('.select-btn').innerText='Rejected'
+        const buttonInfo={
+            Mobilename,
+            Developer,
+            Remote,
+            selectbtn :'Rejected',
+            Notes,
+        }
+        const plantExist=RejectedList.find(item=>item.Mobilename==buttonInfo.Mobilename)
+        if(!plantExist){
+            RejectedList.push(buttonInfo)
+        }
+        renderRejectedList()
+        allCardCount()
+    }
+
 })
 //InterviewList rendar
 function renderInterviewList(){
@@ -93,6 +115,35 @@ function renderInterviewList(){
                     <p class="Remote text-[#64748B] font-[14px]">Remote • Full-time • $130,000 - $175,000</p>
                     <div>
                         <button class=" select-btn bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded">${Inter .selectbtn}</button>
+
+                        <h2 class="Notes text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</h2>
+                    </div>
+                    <button class="interview-btn border border-green-600 px-3 py-2 rounded text-green-700">INTERVIEW</button>
+                    <button class="rejected-btn border border-red-600 px-3 py-2 rounded text-red-700">REJECTED</button>
+                </div>
+                <div>
+                    <button class=" delete-btn border rounded-full p-1.5"><i class="fa-solid fa-trash-can"></i></button>
+                </div>`
+            emptysection.appendChild(div)
+    }
+}
+
+//rejectedlist render
+function renderRejectedList(){
+    emptysection.innerText=''
+    for(let Reject of RejectedList){
+        console.log(Reject)
+        let div=document.createElement('div')
+        div.className='bg-white lg:flex justify-between p-5 rounded'
+        div.innerHTML=`
+         <div class="space-y-4">
+                    <div>
+                        <h1 class="Mobile-name text-[#002C5C] font-semibold text-[18px]">hllo${Reject .Mobilename}</h1>
+                        <p class="Developer  text-[#64748B] font-[16px] ">React Native Developer</p>
+                    </div>
+                    <p class="Remote text-[#64748B] font-[14px]">Remote • Full-time • $130,000 - $175,000</p>
+                    <div>
+                        <button class=" select-btn bg-[#EEF4FF] px-3 py-2 text-[#002C5C] rounded">${Reject .selectbtn}</button>
 
                         <h2 class="Notes text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</h2>
                     </div>
