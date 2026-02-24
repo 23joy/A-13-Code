@@ -1,6 +1,6 @@
 let InterviewList=[];
 let RejectedList=[];
-
+let currentStatus='All-btn'
 
 const TotalCount=document.getElementById("Total-Count")
 const InterviewCount=document.getElementById("Interview-Count")
@@ -44,7 +44,7 @@ function toggolStyle(id){
     if(id=="Interview-btn"){
         count.classList.add('hidden')
         emptysection.classList.remove('hidden')
-        renderInterviewList()
+        
     }
     else if(id=='All-btn'){
         count.classList.remove('hidden')
@@ -53,7 +53,6 @@ function toggolStyle(id){
     else if(id=='Rejected-btn'){
         count.classList.add('hidden')
         emptysection.classList.remove('hidden')
-        renderRejectedList()
     }
 
 }
