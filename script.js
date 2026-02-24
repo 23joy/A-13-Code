@@ -1,6 +1,7 @@
 let InterviewList=[];
 let RejectedList=[];
 
+
 const TotalCount=document.getElementById("Total-Count")
 const InterviewCount=document.getElementById("Interview-Count")
 const RejectedCount=document.getElementById("Rejected-Count")
@@ -36,11 +37,14 @@ function toggolStyle(id){
 
     
     const selected=document.getElementById(id)
+    currentStatus=id;
+    
     selected.classList.remove('bg-white','text-[#64748B]')
     selected.classList.add('bg-[#3B82F6]','text-white')
     if(id=="Interview-btn"){
         count.classList.add('hidden')
         emptysection.classList.remove('hidden')
+        renderInterviewList()
     }
     else if(id=='All-btn'){
         count.classList.remove('hidden')
@@ -49,6 +53,7 @@ function toggolStyle(id){
     else if(id=='Rejected-btn'){
         count.classList.add('hidden')
         emptysection.classList.remove('hidden')
+        renderRejectedList()
     }
 
 }
@@ -72,7 +77,11 @@ mainContainer.addEventListener('click',function(event){
         if(!plantExist){
             InterviewList.push(buttonInfo)
         }
-        renderInterviewList()
+         RejectedList=RejectedList.filter(item=>item.Mobilename!=buttonInfo.Mobilename)
+         if(currentStatus=='InterviewList'){
+            renderInterviewList()
+         }
+
         allCardCount()
     }
     else if(event.target.classList.contains('rejected-btn')){
@@ -94,14 +103,17 @@ mainContainer.addEventListener('click',function(event){
         if(!plantExist){
             RejectedList.push(buttonInfo)
         }
-        renderRejectedList()
+         InterviewList=InterviewList.filter(item=>item.Mobilename!=buttonInfo.Mobilename)
+       if(currentStatus=="Interview-btn"){
+         renderRejectedList()
+       }
         allCardCount()
     }
 
 })
 //InterviewList rendar
 function renderInterviewList(){
-    emptysection.innerText=''
+    emptysection.innerHTML=''
     for(let Inter of InterviewList){
         console.log(Inter)
         let div=document.createElement('div')
@@ -130,7 +142,7 @@ function renderInterviewList(){
 
 //rejectedlist render
 function renderRejectedList(){
-    emptysection.innerText=''
+    emptysection.innerHTML=''
     for(let Reject of RejectedList){
         console.log(Reject)
         let div=document.createElement('div')
