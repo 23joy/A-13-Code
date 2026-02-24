@@ -42,7 +42,7 @@
         <div>
             <div class="flex justify-between space-y-4">
                 <h1 class="text-[#002C5C] font-semibold text-[20px]">Available Jobs</h1>
-                <p>8 jobs</p>
+                <p class="customise">8 jobs</p>
             </div>
             <div class="gap-2">
                 <button onclick="toggolStyle('All-btn')" id="All-btn" class=" bg-[#3B82F6] px-8 py-2.5 rounded-xs">All</button>
@@ -53,12 +53,12 @@
 
         <!-- empty section -->
          <section id="empty-section"class="space-y-4 bg-white hidden" >
-            <div class="flex justify-center items-center ">
+            <div  class=" flex flex-col justify-center items-center p-20">
                 <img src="./jobs.png" alt="">
-                <div class="">
-                    <h2>No jobs available</h2>
-                    <p>Check back soon for new job opportunites</p>
-                </div>
+                
+                 <h2>No jobs available</h2>
+                 <p>Check back soon for new job opportunites</p>
+
             </div>
          </section>
 
@@ -66,7 +66,7 @@
         <!-- cards section -->
         <section id="buttons" class="space-y-4" >
             <!-- card-1 -->
-            <div class="bg-white lg:flex justify-between p-5 rounded">
+            <div class="bg-white lg:flex justify-between  p-5 rounded">
                 <!-- card left -->
                  <div class="space-y-4">
                     <div>

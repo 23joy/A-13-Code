@@ -5,6 +5,8 @@ let currentStatus='All-btn'
 const TotalCount=document.getElementById("Total-Count")
 const InterviewCount=document.getElementById("Interview-Count")
 const RejectedCount=document.getElementById("Rejected-Count")
+const customCount=document.getElementById("customise")
+
 
 const count=document.getElementById("buttons")
 const mainContainer=document.querySelector('main')
@@ -19,7 +21,9 @@ function allCardCount(){
     TotalCount.innerText=count.children.length
     InterviewCount.innerText=InterviewList.length
     RejectedCount.innerText=RejectedList.length
+
 }
+
 allCardCount()
 
 // toggol style function
@@ -41,24 +45,28 @@ function toggolStyle(id){
     
     selected.classList.remove('bg-white','text-[#64748B]')
     selected.classList.add('bg-[#3B82F6]','text-white')
-    if(id=="Interview-btn"){
-        count.classList.add('hidden')
+
+
+     if (id == 'Interview-btn') {
+        count.classList.add('hidden');
         emptysection.classList.remove('hidden')
-        
-    }
-    else if(id=='All-btn'){
-        count.classList.remove('hidden')
-        emptysection.classList.add('hidden')
-    }
-    else if(id=='Rejected-btn'){
-        count.classList.add('hidden')
+       renderInterviewList()
+    } else if (id == 'All-btn') {
+        count.classList.remove('hidden');
+       emptysection.classList.add('hidden')
+    } else if (id == 'Rejected-btn') {
+        count.classList.add('hidden');
         emptysection.classList.remove('hidden')
+        renderRejectedList()
     }
+    
 
 }
 mainContainer.addEventListener('click',function(event){
     if(event.target.classList.contains('interview-btn')){
+
         const parentNode=event.target.parentNode.parentNode;
+
         const Mobilename=parentNode.querySelector('.Mobile-name').innerText
         const Developer=parentNode.querySelector('.Developer').innerText
         const Remote=parentNode.querySelector('.Remote').innerText
@@ -77,14 +85,16 @@ mainContainer.addEventListener('click',function(event){
             InterviewList.push(buttonInfo)
         }
          RejectedList=RejectedList.filter(item=>item.Mobilename!=buttonInfo.Mobilename)
-         if(currentStatus=='InterviewList'){
-            renderInterviewList()
+         
+         
+         if(currentStatus=='Rejected-btn'){
+            renderRejectedList();
          }
-
-        allCardCount()
+          allCardCount()
     }
     else if(event.target.classList.contains('rejected-btn')){
         const parentNode=event.target.parentNode.parentNode;
+
         const Mobilename=parentNode.querySelector('.Mobile-name').innerText
         const Developer=parentNode.querySelector('.Developer').innerText
         const Remote=parentNode.querySelector('.Remote').innerText
@@ -103,10 +113,12 @@ mainContainer.addEventListener('click',function(event){
             RejectedList.push(buttonInfo)
         }
          InterviewList=InterviewList.filter(item=>item.Mobilename!=buttonInfo.Mobilename)
+        
        if(currentStatus=="Interview-btn"){
-         renderRejectedList()
+         renderInterviewList()
        }
-        allCardCount()
+        allCardCount();
+        
     }
 
 })
@@ -143,13 +155,12 @@ function renderInterviewList(){
 function renderRejectedList(){
     emptysection.innerHTML=''
     for(let Reject of RejectedList){
-        console.log(Reject)
         let div=document.createElement('div')
         div.className='bg-white lg:flex justify-between p-5 rounded'
         div.innerHTML=`
          <div class="space-y-4">
                     <div>
-                        <h1 class="Mobile-name text-[#002C5C] font-semibold text-[18px]">hllo${Reject .Mobilename}</h1>
+                        <h1 class="Mobile-name text-[#002C5C] font-semibold text-[18px]">${Reject .Mobilename}</h1>
                         <p class="Developer  text-[#64748B] font-[16px] ">React Native Developer</p>
                     </div>
                     <p class="Remote text-[#64748B] font-[14px]">Remote • Full-time • $130,000 - $175,000</p>
